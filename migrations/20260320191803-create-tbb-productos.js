@@ -23,7 +23,7 @@ module.exports = {
       },
 
       id_categoria: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: 'tbc_categorias',

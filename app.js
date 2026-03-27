@@ -10,8 +10,10 @@ app.use(bodyPaser.json());
 app.use(bodyPaser.urlencoded({extended: false}));
 
 app.get('/',(req,res)=>res.status(200).send({
-    menssage:'Bienvenido a mi API de tienda virtual',
+    menssage:'Bienvenido a mi API de tienda virtual Pao Rodriguez',
 }));
+
+require('./routes/route_categoria')(app);
 
 const port= parseInt(process.env.PORT,10)|| 8000;
 app.set('port',port);

@@ -1,4 +1,4 @@
-const carritoController = require('../controllers/controller_carrito');
+const carritoController = require('../Controllers/controller_carrito');
 
 module.exports = (app) => {
     app.get('/api/carritos', carritoController.list);

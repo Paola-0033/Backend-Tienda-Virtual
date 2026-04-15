@@ -6,9 +6,8 @@ module.exports = {
         return carrito
             .create({
                 id_usuario: req.body.id_usuario,
-                total: req.body.total,
-                estado: req.body.estado,
-                fecha_creacion: req.body.fecha_creacion
+                total: req.body.total || 0,
+                fecha_creacion: req.body.fecha_creacion || new Date()
             })
             .then(carrito => res.status(200).send(carrito))
             .catch(error => res.status(400).send(error))
@@ -32,7 +31,6 @@ module.exports = {
             {
                 id_usuario: req.body.id_usuario,
                 total: req.body.total,
-                estado: req.body.estado,
                 fecha_creacion: req.body.fecha_creacion
             },
             {

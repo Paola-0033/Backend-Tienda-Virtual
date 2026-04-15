@@ -10,13 +10,23 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       id_usuario: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER,
+        allowNull: false
       },
       total: {
-        type: Sequelize.STRING
+        type: Sequelize.DECIMAL(10, 2),
+        defaultValue: 0,
+        allowNull: false
+      },
+      estado: {
+        type: Sequelize.ENUM('pendiente', 'pagado', 'cancelado'),
+        defaultValue: 'pendiente',
+        allowNull: false
       },
       fecha_creacion: {
-        type: Sequelize.STRING
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.NOW,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,

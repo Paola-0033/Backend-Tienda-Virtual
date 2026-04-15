@@ -1,4 +1,4 @@
-const usuarioController = require('../controllers/controller_usuario');
+const usuarioController = require('../Controllers/controller_usuario');
 
 module.exports = (app) => {
     app.get('/api/usuarios', usuarioController.list);

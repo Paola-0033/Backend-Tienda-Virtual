@@ -20,16 +20,13 @@ module.exports = (sequelize, DataTypes) => {
     },
     total: {
       type: DataTypes.DECIMAL(10, 2),
-      allowNull: false
-    },
-    estado: {
-      type: DataTypes.ENUM('pendiente', 'pagado', 'cancelado'),
-      defaultValue: 'pendiente',
-      allowNull: false
+      allowNull: false,
+      defaultValue: 0
     },
     fecha_creacion: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: false,
+      defaultValue: DataTypes.NOW
     }
   }, {
     sequelize,

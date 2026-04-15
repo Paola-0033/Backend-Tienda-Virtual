@@ -10,18 +10,22 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       nombre: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(100),
+        allowNull: false
       },
       descripcion: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(150),
+        allowNull: false
       },
       precio: {
-        type: Sequelize.STRING
+        type: Sequelize.DECIMAL(10, 2),
+        allowNull: false
       },
       stock: {
-        type: Sequelize.STRING
+        type: Sequelize.DECIMAL(10, 2),
+        allowNull: false
       },
-
+      
       id_categoria: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -30,10 +34,8 @@ module.exports = {
           key: 'id'
         },
         onUpdate: 'NO ACTION',
-        onDelete: 'No ACTION'
+        onDelete: 'NO ACTION'
       },
-
-      
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('tbd_carrito_detalles', {
+    await queryInterface.createTable('tbd_carrito_detalle', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -10,16 +10,32 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       id_carrito: {
-        type: Sequelize.STRING
-      },
-      precio_unitario: {
-        type: Sequelize.STRING
-      },
-      cantidad: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'tbb_carritos',
+          key: 'id'
+        },
+        onUpdate: 'NO ACTION',
+        onDelete: 'NO ACTION'
       },
       id_producto: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'tbb_productos',
+          key: 'id'
+        },
+        onUpdate: 'NO ACTION',
+        onDelete: 'NO ACTION'
+      },
+      precio_unitario: {
+        type: Sequelize.DECIMAL(10, 2),
+        allowNull: false
+      },
+      cantidad: {
+        type: Sequelize.INTEGER,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,
@@ -32,6 +48,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('tbd_carrito_detalles');
+    await queryInterface.dropTable('tbd_carrito_detalle');
   }
 };

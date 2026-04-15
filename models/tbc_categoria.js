@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class tbc_categorias extends Model {
+  class tbc_categoria extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,24 +13,16 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  tbc_categorias.init({
+  tbc_categoria.init({
     nombre: {
-      type: DataTypes.STRING(100),
+      type: DataTypes.STRING(150),
       allowNull: false
-  }, 
+    }
+  }, {
     sequelize,
-    modelName: 'tbc_categorias',
+    modelName: 'tbc_categoria',
+    tableName: 'tbc_categorias',
   });
 
-  tbc_categorias.associate = function(models) {
-    // Relación con tbc_usuario
-    tbc_categorias.hasMany(models.tbb_productos,
-       {
-        as: 'tbb_productos',
-        foreignKey: 'id_categoria',
-      
-    });
-
-  return tbc_categorias;
+  return tbc_categoria;
 };
-}

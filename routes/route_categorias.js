@@ -1,4 +1,5 @@
-const categoriaController = require('../Controlers/controler_categoria');
+const categoriaController = require('../controllers/controller_categoria');
+
 module.exports = (app) => {
     app.get('/api/categorias', categoriaController.list);
     app.get('/api/categoria/:nombre', categoriaController.find);

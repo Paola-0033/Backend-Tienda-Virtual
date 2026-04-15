@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class tbc_usuario extends Model {
+  class tbb_producto extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,40 +13,41 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  tbc_usuario.init({
+  tbb_producto.init({
     nombre: {
       type: DataTypes.STRING(100),
       allowNull: false
     },
-    direccion: {
-      type: DataTypes.STRING(200),
+    descripcion: {
+      type: DataTypes.STRING(150),
       allowNull: false
     },
-    telefono: {
-      type: DataTypes.STRING(15),
+    precio: {
+      type: DataTypes.DECIMAL(10, 2),
       allowNull: false
     },
-    email: {
-      type: DataTypes.STRING(120),
+    stock: {
+      type: DataTypes.DECIMAL(10, 2),
       allowNull: false
     },
-    password: {
-      type: DataTypes.STRING(255),
-      allowNull: false
-    },
-    rol: {
-      type: DataTypes.ENUM('admin', 'cliente'),
-      defaultValue: 'cliente',
-      allowNull: false
-    },
-    fecha_registro: {
-      type: DataTypes.DATE,
+    id_categoria: {
+      type: DataTypes.INTEGER,
       allowNull: false
     }
   }, {
     sequelize,
-    modelName: 'tbc_usuario',
-    tableName: 'tbc_usuarios',
+    modelName: 'tbb_producto',
+    tableName: 'tbb_productos',
   });
-  return tbc_usuario;
+
+  tbb_producto.associate = function (models) {
+    // Relación con tbb_categoria
+    tbb_producto.belongsTo(models.tbc_categoria,
+      {
+        as: 'tbc_categoria',
+        foreignKey: 'id_categoria',
+      }
+    );
+  };
+  return tbb_producto;
 };

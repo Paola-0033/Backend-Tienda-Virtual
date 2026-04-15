@@ -15,7 +15,7 @@ module.exports = {
       },
       direccion: {
         type: Sequelize.STRING(200),
-        allowNull: false  
+        allowNull: false
       },
       telefono: {
         type: Sequelize.STRING(15),
@@ -31,11 +31,12 @@ module.exports = {
       },
       rol: {
         type: Sequelize.ENUM('admin', 'cliente'),
-        allowNull: false,
-        defaultValue: 'cliente'
+        defaultValue: 'cliente',
+        allowNull: false
       },
       fecha_registro: {
-        type: Sequelize.STRING
+        type: Sequelize.DATE,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,

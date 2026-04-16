@@ -23,5 +23,7 @@ require('./routes/route_carrito_detalle')(app);
 const port= parseInt(process.env.PORT,10)|| 8000;
 app.set('port',port);
 const server = http.createServer(app);
-server.listen(port);
+server.listen(port, () => {
+    console.log(`Servidor escuchando en el puerto ${port}`);
+});
 module.exports=app;

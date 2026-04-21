@@ -1,10 +1,17 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 const logger = require('morgan');
 const bodyPaser = require('body-parser');
 
 const http = require('http');
 const app = express();
+app.use(cors({
+    origin: 'http://localhost:5173',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    Credentials: true,
+}));
 
 app.use(logger('dev'));
 app.use(bodyPaser.json());
